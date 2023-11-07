@@ -1,9 +1,7 @@
-package com.webhook.infrastructure.repository.cache.redis.impl;
+package com.webhook.infrastructure.repository.cache.redis;
 
 import com.webhook.core.vo.CacheId;
-import com.webhook.core.webhook.cache.CacheWebhook;
-import com.webhook.infrastructure.repository.cache.redis.CacheWebhookRedisRepository;
-import com.webhook.infrastructure.repository.cache.redis.RedisConstant;
+import com.webhook.infrastructure.repository.cache.CacheWebhookSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 @Repository
 @RequiredArgsConstructor
-public class CacheWebhookRedisRepositoryImpl implements CacheWebhookRedisRepository {
+public non-sealed class CacheWebhookRedisRepositoryImpl implements CacheWebhookRedisRepository {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
@@ -23,20 +21,20 @@ public class CacheWebhookRedisRepositoryImpl implements CacheWebhookRedisReposit
     private Integer REDIS_WEBHOOK_CACHE_TTL;
 
     @Override
-    public void save(CacheWebhook cacheWebhook) {
-        String id = cacheWebhook.cacheId().id();
+    public void save(CacheWebhookSession session) {
+        String id = session.cacheId();
         String idKey = RedisConstant.REDIS_WEBHOOK_CACHE_PREFIX + id;
 
-        redisTemplate.opsForValue().set(idKey, cacheWebhook, REDIS_WEBHOOK_CACHE_TTL, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(idKey, session, REDIS_WEBHOOK_CACHE_TTL, TimeUnit.MINUTES);
     }
 
     @Override
-    public Optional<CacheWebhook> findById(CacheId cacheId) {
+    public Optional<CacheWebhookSession> findById(CacheId cacheId) {
         String id = cacheId.id();
         String idKey = RedisConstant.REDIS_WEBHOOK_CACHE_PREFIX + id;
-        CacheWebhook findObject = (CacheWebhook) redisTemplate.opsForValue().get(idKey);
+        CacheWebhookSession findObject = (CacheWebhookSession) redisTemplate.opsForValue().get(idKey);
 
-        Optional<CacheWebhook> result;
+        Optional<CacheWebhookSession> result;
         if (ObjectUtils.isEmpty(findObject)) {
             result = Optional.empty();
         }

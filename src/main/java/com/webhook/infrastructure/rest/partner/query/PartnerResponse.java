@@ -1,12 +1,11 @@
-package com.webhook.application.input.rest.partner.query;
+package com.webhook.infrastructure.rest.partner.query;
 
 import com.webhook.core.vo.WebhookStatus;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 public record PartnerResponse(
-        UUID id,
+        String id,
         String name,
         String url,
         WebhookStatus status

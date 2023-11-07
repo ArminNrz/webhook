@@ -1,11 +1,10 @@
-package com.webhook.infrastructure.event.model;
+package com.webhook.infrastructure.event.order.model;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 public record OrderEventModel(
         String orderId,
-        UUID partnerId,
+        String partnerId,
         String postTrackingCode
 ) implements Serializable {
 }

@@ -1,8 +1,8 @@
-package com.webhook.application.input.rest.partner;
+package com.webhook.infrastructure.rest.partner;
 
-import com.webhook.application.input.rest.partner.command.PartnerCreateCommand;
-import com.webhook.application.input.rest.partner.query.PartnerResponse;
-import com.webhook.application.input.service.PartnerApplicationService;
+import com.webhook.infrastructure.rest.partner.command.PartnerCreateCommand;
+import com.webhook.infrastructure.rest.partner.query.PartnerResponse;
+import com.webhook.application.input.partner.PartnerApplicationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

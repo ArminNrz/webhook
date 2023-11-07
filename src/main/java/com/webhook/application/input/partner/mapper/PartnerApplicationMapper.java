@@ -1,4 +1,4 @@
-package com.webhook.application.input.partner;
+package com.webhook.application.input.partner.mapper;
 
 import com.webhook.infrastructure.rest.partner.query.PartnerResponse;
 import com.webhook.core.partner.Partner;

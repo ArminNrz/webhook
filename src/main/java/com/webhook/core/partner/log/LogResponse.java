@@ -1,2 +1,11 @@
-package com.webhook.core.partner.log;public record LogResponse() {
+package com.webhook.core.partner.log;
+
+import org.springframework.http.HttpStatusCode;
+
+import java.io.Serializable;
+
+public record LogResponse(
+        String responseBody,
+        HttpStatusCode responseStatus
+) implements Serializable {
 }

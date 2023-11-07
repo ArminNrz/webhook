@@ -1,11 +1,11 @@
 package com.webhook.core.exception;
 
-public class WebhookException extends RuntimeException {
-    public WebhookException(String message) {
+public class PartnerException extends RuntimeException {
+    public PartnerException(String message) {
         super(message);
     }
 
-    public WebhookException(String message, Throwable cause) {
+    public PartnerException(String message, Throwable cause) {
         super(message, cause);
     }
 }

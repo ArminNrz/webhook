@@ -1,2 +1,5 @@
-package com.webhook.core.vo;public enum WebhookType {
+package com.webhook.core.vo;
+
+public enum WebhookType {
+    ORDER, PARCEL
 }

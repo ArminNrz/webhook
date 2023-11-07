@@ -1,4 +1,4 @@
-package com.webhook.application.input.rest.exception;
+package com.webhook.infrastructure.rest.exception;
 
 import java.io.Serializable;
 

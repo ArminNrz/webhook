@@ -1,7 +1,11 @@
-package com.webhook.core.webhook;
+package com.webhook.infrastructure.service;
 
 import com.webhook.core.partner.Partner;
+import com.webhook.core.webhook.WebhookService;
 import com.webhook.core.webhook.common.BaseWebhookDomain;
+import com.webhook.infrastructure.service.helper.WebhookBackOffHelper;
+import com.webhook.infrastructure.service.helper.WebhookFirstCallBackHelper;
+import com.webhook.infrastructure.service.requestsender.RequestSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +20,8 @@ import java.util.concurrent.Executors;
 public class WebhookServiceImpl<I extends BaseWebhookDomain> implements WebhookService<I> {
 
     private final RequestSender requestSender;
-    private final WebhookCallBackHelper callBackHelper;
+    private final WebhookFirstCallBackHelper callBackHelper;
+    private final WebhookBackOffHelper backOffHelper;
 
     @Override
     public void sendFirstAttempt(Partner partner, I transferObject) {

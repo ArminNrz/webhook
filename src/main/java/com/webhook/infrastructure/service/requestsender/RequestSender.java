@@ -1,4 +1,4 @@
-package com.webhook.core.webhook;
+package com.webhook.infrastructure.service.requestsender;
 
 import com.webhook.core.partner.Partner;
 import org.springframework.http.ResponseEntity;

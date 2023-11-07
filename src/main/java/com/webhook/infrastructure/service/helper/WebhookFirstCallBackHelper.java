@@ -1,4 +1,4 @@
-package com.webhook.infrastructure.service;
+package com.webhook.infrastructure.service.helper;
 
 import com.webhook.application.output.WebhookApplicationEventPublisher;
 import com.webhook.core.partner.Partner;
@@ -19,7 +19,7 @@ public class WebhookFirstCallBackHelper {
     public void callBack(ResponseEntity<String> responseEntity, Throwable throwable, String requestBody, Partner partner) {
         if (throwable != null) {
             log.error("There is an error occurred in calling webhook partner: {}", partner, throwable);
-            domainService.persist(partner, 1);
+            domainService.persist(partner, 1, requestBody);
             applicationEventPublisher.publish(partner, requestBody, throwable);
             return;
         }
@@ -27,7 +27,7 @@ public class WebhookFirstCallBackHelper {
         log.info("Called webhook with url: {}, response: {}", partner.url(), responseEntity);
         if (!responseEntity.getStatusCode().is2xxSuccessful()) {
             log.warn("Webhook called to partner url: {}, is not success with status code: {}", partner.url(), responseEntity.getStatusCode().value());
-            domainService.persist(partner, 1);
+            domainService.persist(partner, 1, requestBody);
         }
         applicationEventPublisher.publish(partner, requestBody, responseEntity);
     }

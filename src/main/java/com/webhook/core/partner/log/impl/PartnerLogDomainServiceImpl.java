@@ -1,5 +1,9 @@
-package com.webhook.core.partner.log;
+package com.webhook.core.partner.log.impl;
 
+import com.webhook.core.partner.log.PartnerLog;
+import com.webhook.core.partner.log.PartnerLogDomainService;
+import com.webhook.core.partner.log.PartnerLogItem;
+import com.webhook.core.partner.log.PartnerLogRepository;
 import com.webhook.core.vo.PartnerId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

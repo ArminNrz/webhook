@@ -1,9 +1,10 @@
-package com.webhook.infrastructure.event;
+package com.webhook.infrastructure.event.order;
 
 import com.webhook.application.input.webhook.WebhookOrderApplicationService;
-import com.webhook.infrastructure.event.model.OrderEventModel;
+import com.webhook.infrastructure.event.order.model.OrderEventModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class OrderEventConsumer {
 
     private final WebhookOrderApplicationService applicationService;
 
-    //todo: consumer annotation
+    @RabbitListener(queues = {"webhook.queue"})
     public void consume(OrderEventModel eventModel) {
         log.info("Consume order event model: {}", eventModel);
         applicationService.processOrderEvent(eventModel);

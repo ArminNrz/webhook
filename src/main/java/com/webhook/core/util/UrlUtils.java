@@ -1,4 +1,4 @@
-package com.webhook.infrastructure;
+package com.webhook.core.util;
 
 import java.net.URL;
 

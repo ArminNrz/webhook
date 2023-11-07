@@ -1,0 +1,40 @@
+server:
+  port: 9091
+
+logging:
+  level:
+    root: info
+    com:
+      webhook: debug
+
+spring:
+  application:
+    name: webhook
+  datasource:
+    url: jdbc:mysql://localhost:3306/webhook?createDatabaseIfNotExist=true
+    username: root
+    password: Armin#123
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  liquibase:
+    change-log: liquibase/changelog-master.xml
+  data:
+    redis:
+      port: 6379
+      password: admin
+      host: localhost
+      timeout: 6000
+      TTL:
+        cache: 30
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+
+webhook:
+  backoff:
+    read-timeout: 10000
+    connection-timeout: 10000

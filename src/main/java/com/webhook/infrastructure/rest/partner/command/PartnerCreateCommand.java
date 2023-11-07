@@ -1,4 +1,4 @@
-package com.webhook.application.input.rest.partner.command;
+package com.webhook.infrastructure.rest.partner.command;
 
 import jakarta.validation.constraints.NotBlank;
 

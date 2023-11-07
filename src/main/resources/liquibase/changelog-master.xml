@@ -4,30 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <include file="liquibase/changelog/2023_07_26_asset_entity.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_26_branch_entity.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_26_colleague.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_26_company.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_26_company_color.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_26_customer.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_07_27_keycloak_event.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_01_teamLeaderId.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_06_company_title_unique.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_06_company_description_data_type.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_06_colleague_branch.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_10_company_approved.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_10_customer_deleted_archived.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_10_company_attachment_entity.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_23_country.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_25_company_tel_remove_nullable.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_08_25_branch_address.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_10_13_company_address_title_migrate.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/2023_10_18_remove_customer_inpress_id.xml" relativeToChangelogFile="false"/>
-    <include file="/liquibase/changelog/2023_10_18_remove_inpress_user_colleague.xml" relativeToChangelogFile="false"/>
-
-
-    <include file="liquibase/changelog/29-01-address.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/29-01-telephone.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/29-02-company.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase/changelog/02-01-color.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/05-01-partner.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/05-01-partner-log.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

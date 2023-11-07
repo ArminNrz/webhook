@@ -1,6 +1,7 @@
-package com.webhook.application.input.rest.exception;
+package com.webhook.infrastructure.rest.exception;
 
 import com.webhook.core.exception.PartnerException;
+import com.webhook.core.exception.PartnerNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,5 +21,11 @@ public class WebhookGlobalExceptionHandler {
         return new ErrorDTO(HttpStatus.BAD_REQUEST.getReasonPhrase(), partnerException.getMessage());
     }
 
-
+    @ResponseBody
+    @ExceptionHandler(value = {PartnerNotFoundException.class})
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorDTO handleException(PartnerNotFoundException notFoundException) {
+        log.error(notFoundException.getMessage(), notFoundException);
+        return new ErrorDTO(HttpStatus.BAD_REQUEST.getReasonPhrase(), notFoundException.getMessage());
+    }
 }

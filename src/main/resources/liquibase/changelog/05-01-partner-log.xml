@@ -5,4 +5,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
+    <changeSet id="1699196233974-1" author="armin">
+        <createTable tableName="partner_log">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_partner_log"/>
+            </column>
+            <column name="partner_entity_id" type="VARCHAR(255)"/>
+            <column name="destination_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="request_body" type="VARCHAR(255)"/>
+            <column name="response_body" type="VARCHAR(255)"/>
+            <column name="response_status_code" type="INT"/>
+            <column name="success" type="BOOLEAN"/>
+            <column name="created" type="DATETIME"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="partner_entity_id" baseTableName="partner_log" constraintName="FK_PARTNER_LOG_ON_PARTNER_ENTITY" referencedColumnNames="id" referencedTableName="partner"/>
+    </changeSet>
 </databaseChangeLog>

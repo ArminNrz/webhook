@@ -1,4 +1,4 @@
-package com.webhook.infrastructure.event.webhook;
+package com.webhook.infrastructure.event.webhook.model;
 
 import com.webhook.core.partner.Partner;
 import com.webhook.core.partner.log.LogRequest;
@@ -6,6 +6,7 @@ import com.webhook.core.partner.log.LogResponse;
 import com.webhook.core.util.TimeUtils;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.time.ZonedDateTime;
 
 @Getter
 @Setter
+@ToString
 public class WebhookEvent extends ApplicationEvent {
     private Partner partner;
     private LogRequest logRequest;
@@ -24,7 +26,7 @@ public class WebhookEvent extends ApplicationEvent {
         super(source);
         this.partner = partner;
         this.logRequest = new LogRequest(partner.url(), requestBody);
-        this.logResponse = new LogResponse(responseEntity.getBody(), responseEntity.getStatusCode().value());
+        this.logResponse = new LogResponse(responseEntity.getBody(), responseEntity.getStatusCode());
         this.created = TimeUtils.now();
     }
 
@@ -32,7 +34,7 @@ public class WebhookEvent extends ApplicationEvent {
         super(source);
         this.partner = partner;
         this.logRequest = new LogRequest(partner.url(), requestBody);
-        this.logResponse = new LogResponse(throwable.getMessage(), HttpStatus.SERVICE_UNAVAILABLE.value());
+        this.logResponse = new LogResponse(throwable.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
         this.created = TimeUtils.now();
     }
 }
